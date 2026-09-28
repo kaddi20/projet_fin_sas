@@ -182,5 +182,25 @@ function afficherListeCan(){
         
     }
  }
-
+ //Modifier les informations d'un candidat
+ function modifierInfo(){
+  let rechercherCin =prompt("Entrer la CIN du condidat: ");
+  let trouve = false;
+  for(let i=0;i<candidats.length;i++){
+    if(candidats[i].cin===rechercherCin){
+      let nvPartiPolitique = prompt("Entrer le nouveau parti politique : ")
+      let nvAge = Number(prompt("Entrer un Nouvel Age :"));
+      candidats[i].partiPolitique = nvPartiPolitique;
+      candidats[i].age = nvAge;
+      trouve = true;
+      break;
+    }
+  }
+  if(trouve){
+    console.log("Les informations ont été modifiées avec succès")
+  }
+  else{
+    console.log("Auccun candidat trouvé avec cette CIN.")
+  }
+ }
 
