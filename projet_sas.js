@@ -203,4 +203,34 @@ function afficherListeCan(){
     console.log("Auccun candidat trouvé avec cette CIN.")
   }
  }
+  //Supprimer un candidat
+
+ function supprimerCandidat() {
+
+    let candidatCin = prompt("Saisir le CIN du candidat à supprimer : ");
+    let nouveauCandidats = [];
+    let trouve = false;
+
+  for (let i = 0; i < candidats.length; i++) {
+        if (candidats[i].cin === candidatCin) {
+            trouve = true;
+            
+        } else {
+            nouveauCandidats.push(candidats[i]);
+        }
+    }
+
+
+  if (trouve) {
+    candidats.length = 0;
+        for(let i=0;i<nouveauCandidats.length;i++){
+          candidats.push(nouveauCandidats[i])
+        }
+    console.log("Le candidat a été supprimé.");
+  }
+
+   else {
+        console.log("Candidat introuvable.");
+  }
+ }
 
