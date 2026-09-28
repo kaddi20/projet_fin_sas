@@ -252,4 +252,51 @@ function afficherListeCan(){
       console.log("Candidat introuvable.");
     }
  }
+ //Statistiques de l'élection 
+function statistiques(){
+    let nombreTotalCan = 0;
+    for(let i=0;i<candidats.length;i++){
+        nombreTotalCan ++;
+    }
+    console.log("Nombre total de candidats :"+ nombreTotalCan + " Candidat");
+    let nombreTotalVotes = 0;
+    for(let i=0;i<candidats.length;i++){
+        nombreTotalVotes+= candidats[i].electeurs.length;
+    }
+     console.log("Nombre total de votes :"+ nombreTotalVotes + " vote");
+    //Afficher le Top 3 des candidats ayant le plus de votes.
+    console.log("====le Top 3 des candidats====" )
+    const topCandidat = []
+    for(let i =0;i<candidats.length;i++){
+        topCandidat.push(candidats[i])
+    }
+    for(let i=0; i<topCandidat.length-1;i++){
+         for(let j=0;j<topCandidat.length-1-i;j++){
+            if(topCandidat[j].electeurs.length < topCandidat[j+1].electeurs.length){
+                let a = topCandidat[j];
+                topCandidat[j] = topCandidat[j+1];
+                topCandidat[j+1]=a
+            }
+        }
+       
+    }
+     for(let i=0;i<3 && i<topCandidat.length;i++){
+        console.log(topCandidat[i].nom + " : " + topCandidat[i].electeurs.length + " Vote")
+}
+    //Afficher le nombre de candidats par parti politique
+    console.log("===============")
+    const resultat={};
+    for(let i=0;i<candidats.length;i++){
+        let parti = candidats[i].partiPolitique;
+        if(resultat[parti]=== undefined){
+            resultat[parti]=1
+        }
+        else{
+            resultat[parti]++;
+        }
+    }
+    for(let cle in resultat){
+        console.log(cle + ":"+ resultat[cle])
+    }
+}
 
