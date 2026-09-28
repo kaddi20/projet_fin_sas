@@ -1,4 +1,5 @@
 const prompt = require('prompt-sync')();
+const candidats = [];
 let Choix= 0
 do{
 console.log("\n================ MENU PRINCIPAL ================");
@@ -47,3 +48,37 @@ console.log("\n================ MENU PRINCIPAL ================");
                 console.log("Option invalide, veuillez réessayer.");
         }
 }while(Choix!=="0")
+
+//Ajouter un nouveau candidat
+function ajouterCandidat() {
+    let cin = prompt("Donner le CIN :")
+    let trouve = false;
+    for(let i=0;i<candidats.length;i++){
+        if(candidats[i].cin===cin){
+            trouve =true ;
+            break;
+        }
+    }
+    if(trouve){
+        console.log("ce cin est existe déjà");
+    }else{
+     let nom = prompt("Donner le Nom :")
+     let prenom = prompt("donner le prenom: ")
+     let partiPolitique = prompt("Donner le parti politique :")
+     if( partiPolitique === ""){
+        partiPolitique = "independant"
+     }
+     let age = Number(prompt("Donner l'âge :"))
+     let candidat ={
+        cin : cin,
+        nom : nom,
+        prenom : prenom,
+        partiPolitique : partiPolitique,
+        age : age,
+        electeurs: [] 
+    };
+    candidats.push(candidat);
+    console.log("Candidat ajouté avec succès");   
+    }
+
+}
