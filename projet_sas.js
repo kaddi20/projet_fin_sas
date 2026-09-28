@@ -87,6 +87,73 @@ function ajouterPlusiersCan(){
     const plus =Number(prompt("Entrer combien candidats te veux ajouter: "));
     for(let i=0;i<plus;i++){
         ajouterCandidat()
-    }3
+    }
 }
+//Afficher la liste des candidats
+function afficherListeCan(){
+    let Choix2=5
+    do{
+        console.log("\n================ MENU ================");
+        console.log("1.Trier les candidats par nombre de votes ");
+        console.log("2.Filtrer et afficher uniquement les candidats d'un parti politique spécifique");
+        console.log("0.Retour au menu principal "); 
+        console.log("=========================================");
+        Choix2= prompt("Choisissez une option : ");
+
+        switch (Choix2) {
+            case '1':
+                trierCandidats();
+                break;
+            case '2':
+                conPartipolitique();
+                break;
+            case '0':
+                break;
+            default:
+                console.log("Option invalide, veuillez réessayer.");
+        }
+    
+    }while(Choix2!=="0");
+}
+ function trierCandidats(){
+    for(let i=0;i<candidats.length;i++){
+        for(let j=0;j<candidats.length-1-i;j++){
+            if(candidats[j].electeurs.length < candidats[j+1].electeurs.length){
+                let a = candidats[j];
+                candidats[j] = candidats[j+1];
+                candidats[j+1]=a
+                    
+            }
+    
+        }
+    }
+    for(let i=0;i<candidats.length;i++){
+        console.log("CIN: "+ candidats[i].cin);
+        console.log("Nom: "+ candidats[i].nom );
+        console.log("prenom: "+ candidats[i].prenom);
+        console.log("PartiPolitique: "+ candidats[i].partiPolitique);
+        console.log("Age: "+ candidats[i].age);
+        console.log("NombreVote: "+ candidats[i].electeurs.length);
+        console.log("===================")    }  
+ }
+ function conPartipolitique(){
+    let partiPolitique = prompt("Entrer le parti politique : ")
+    let trouve = false;
+    for(let i=0;i<candidats.length;i++){
+        if(candidats[i].partiPolitique === partiPolitique){
+            trouve = true;  
+            console.log("CIN: "+ candidats[i].cin);
+            console.log("Nom: "+ candidats[i].nom );
+            console.log("prenom: "+ candidats[i].prenom);
+            console.log("PartiPolitique: "+ candidats[i].partiPolitique);
+            console.log("Age: "+ candidats[i].age);
+            console.log("NombreVote: "+ candidats[i].electeurs.length);
+            console.log("=============");
+        }
+    } 
+    if(!trouve){
+       console.log("Auccun candidats")    
+    }
+}
+
 
