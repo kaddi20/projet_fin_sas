@@ -155,5 +155,32 @@ function afficherListeCan(){
        console.log("Auccun candidats")    
     }
 }
+ //Voter pour un candidats
+ function voterCandidat(){
+    let electeurCin = prompt("Saisir le CIN de l'electeur: ")
+    let trouve = false;
+    for(let i=0;i<candidats.length;i++){
+        for (let j = 0; j < candidats[i].electeurs.length; j++) {
+            if (candidats[i].electeurs[j] === electeurCin) {
+                trouve = true;
+                break;
+            }
+        }
+    }
+    if(trouve){
+        console.log(" Vous avez déjà voté et vous n'avez pas le droit de modifier votre vote ni de voter à nouveau.")
+    }
+    else{
+        let candidatCin = prompt("Saisir le CIN de candidat: ")
+        for(let i=0;i<candidats.length;i++){
+            if(candidats[i].cin ===candidatCin){
+                candidats[i].electeurs.push(electeurCin)
+                console.log("Votre vote est ajouté");
+            }
+            
+        }
+        
+    }
+ }
 
 
