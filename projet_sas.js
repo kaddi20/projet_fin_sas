@@ -82,3 +82,11 @@ function ajouterCandidat() {
     }
 
 }
+// Ajouter plusieurs candidats
+function ajouterPlusiersCan(){
+    const plus =Number(prompt("Entrer combien candidats te veux ajouter: "));
+    for(let i=0;i<plus;i++){
+        ajouterCandidat()
+    }3
+}
+
