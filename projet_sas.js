@@ -233,4 +233,23 @@ function afficherListeCan(){
         console.log("Candidat introuvable.");
   }
  }
+ // Rechercher des candidats
+ function rechercherCan(){
+    let nomCandidat = prompt("Saisir le nom du candidat : ");
+    let trouve = false;
+    for(let i=0;i<candidats.length;i++){
+        if(candidats[i].nom === nomCandidat) {
+            trouve = true;
+            console.log("CIN: "+ candidats[i].cin);
+            console.log("Nom: "+ candidats[i].nom );
+            console.log("prenom: "+ candidats[i].prenom);
+            console.log("PartiPolitique: "+ candidats[i].partiPolitique);
+            console.log("Age: "+ candidats[i].age);
+            console.log("NombreVote: "+ candidats[i].electeurs.length);
+        }
+    }
+    if(!trouve){
+      console.log("Candidat introuvable.");
+    }
+ }
 
